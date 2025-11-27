@@ -23,7 +23,7 @@ class NumericValidatorTest {
 
   @ParameterizedTest
   @MethodSource("incorrectArgsProvider")
-  void shouldIsNotValidNumeric_whenStrIncorrect(String line) {
+  void shouldIsNotValidNumericWhenStrIncorrect(String line) {
     //when
     boolean actual = numericValidator.isValidNumeric(line);
     //then

@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.Random;
 
 public class CustomArray implements CustomArrayObservable {
-  private int id;
+  private final int id;
   private int[] array;
   private CustomArrayObserver observer;
 
@@ -23,11 +23,6 @@ public class CustomArray implements CustomArrayObservable {
 
   public int getId() {
     return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-    notifyObserver();
   }
 
   public int[] getArray() {
@@ -51,7 +46,9 @@ public class CustomArray implements CustomArrayObservable {
 
   @Override
   public void detach(CustomArrayObserver observer) {
-    this.observer = null;
+    if (observer != null) {
+      this.observer = null;
+    }
   }
 
   @Override

@@ -1,5 +1,8 @@
 package by.rabenok.task1;
 
+import by.rabenok.task1.comparator.FirstElementComparator;
+import by.rabenok.task1.comparator.IdComparator;
+import by.rabenok.task1.comparator.LengthArrayComparator;
 import by.rabenok.task1.entity.CustomArray;
 import by.rabenok.task1.exception.ArrayException;
 import by.rabenok.task1.factory.ArrayFactory;
@@ -9,6 +12,9 @@ import by.rabenok.task1.parser.impl.ArrayParserImpl;
 import by.rabenok.task1.reader.FileArrayReader;
 import by.rabenok.task1.reader.impl.FileArrayReaderImpl;
 import by.rabenok.task1.repository.Repository;
+import by.rabenok.task1.specification.impl.ElementSpecification;
+import by.rabenok.task1.specification.impl.SumEqualsSpecification;
+import by.rabenok.task1.specification.impl.SumLessSpecification;
 import by.rabenok.task1.validator.Validator;
 import by.rabenok.task1.validator.impl.NumericValidator;
 
@@ -29,11 +35,11 @@ public class Main {
         Repository.getInstance().add(customArray);
       }
     }
-//    System.out.println(Repository.getInstance().query(new ElementSpecification(8)));
-//    System.out.println(Repository.getInstance().query(new SumEqualsSpecification(6)));
-//    System.out.println(Repository.getInstance().query(new SumLessSpecification(50)));
-//    System.out.println(Repository.getInstance().sort(new FirstElementComparator()));
-//    System.out.println(Repository.getInstance().sort(new IdComparator()));
-//    System.out.println(Repository.getInstance().sort(new LengthArrayComparator()));
+    System.out.println(Repository.getInstance().query(new ElementSpecification(8)));
+    System.out.println(Repository.getInstance().query(new SumEqualsSpecification(6)));
+    System.out.println(Repository.getInstance().query(new SumLessSpecification(50)));
+    System.out.println(Repository.getInstance().sort(new FirstElementComparator()));
+    System.out.println(Repository.getInstance().sort(new IdComparator()));
+    System.out.println(Repository.getInstance().sort(new LengthArrayComparator()));
   }
 }

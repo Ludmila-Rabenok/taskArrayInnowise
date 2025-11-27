@@ -7,16 +7,18 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ArraySorterImplTest {
   ArraySorter arraySorter = new ArraySorterImpl();
   CustomArray customArray;
+  CustomArray expected;
 
   @BeforeEach
   void setUp() {
-    int[] array = {8, 1, 4, 6, 7, 3, 5, 2};
-    customArray = new CustomArray(array);
+    int[] arrayNoSort = {8, 1, 4, 6, 7, 3, 5, 2};
+    customArray = new CustomArray(arrayNoSort);
+    int[] arraySort = {1, 2, 3, 4, 5, 6, 7, 8};
+    expected = new CustomArray(arraySort);
   }
 
   @AfterEach
@@ -26,9 +28,6 @@ class ArraySorterImplTest {
 
   @Test
   void shouldBubbleSort() {
-    //given
-    int[] array = {1, 2, 3, 4, 5, 6, 7, 8};
-    CustomArray expected = new CustomArray(array);
     //when
     arraySorter.bubbleSort(customArray);
     //then
@@ -37,9 +36,6 @@ class ArraySorterImplTest {
 
   @Test
   void shouldSelectionSort() {
-    //given
-    int[] array = {1, 2, 3, 4, 5, 6, 7, 8};
-    CustomArray expected = new CustomArray(array);
     //when
     arraySorter.selectionSort(customArray);
     //then

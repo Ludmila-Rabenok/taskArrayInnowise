@@ -18,6 +18,7 @@ import static org.mockito.ArgumentMatchers.any;
 
 class FileArrayReaderImplTest {
   FileArrayReader fileArrayReader = new FileArrayReaderImpl();
+  private static final String NON_EXISTENT_FILE = "non_existent_file.txt";
 
   @Test
   void shouldReadFileWithMock() throws ArrayException {
@@ -25,14 +26,14 @@ class FileArrayReaderImplTest {
     try (MockedStatic<Files> mockedStatic = Mockito.mockStatic(Files.class)) {
       mockedStatic.when(() -> Files.readAllLines(any(Path.class))).thenReturn(any(List.class));
       //when
-      fileArrayReader.readFile("non_existent_file.txt");
+      fileArrayReader.readFile(NON_EXISTENT_FILE);
       //then
       mockedStatic.verify(() -> Files.readAllLines(any(Path.class)));
     }
   }
 
   @Test
-  void shouldReadFile() throws ArrayException {
+  public void shouldReadFile() throws ArrayException {
     //given
     List<String> expected = new ArrayList<>();
     expected.add("11.22.33");
@@ -47,7 +48,7 @@ class FileArrayReaderImplTest {
   @Test
   void shouldThrowArrayExceptionWhenFileNotFound() {
     assertThrows(ArrayException.class, () -> {
-      fileArrayReader.readFile("non_existent_file.txt");
+      fileArrayReader.readFile(NON_EXISTENT_FILE);
     });
   }
 }
